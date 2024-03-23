@@ -1,5 +1,7 @@
 package springhandson.handson.service;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import springhandson.handson.domain.Member;
 import springhandson.handson.repository.MemberRepository;
 import springhandson.handson.repository.MemoryMemberRepository;
@@ -7,12 +9,14 @@ import springhandson.handson.repository.MemoryMemberRepository;
 import java.util.List;
 import java.util.Optional;
 
+@Service // Spring Container 에 등록
 public class MemberService {
 
     // 회원 repository 를 직접 생성
     // private final MemberRepository memberRepository = new MemoryMemberRepository();
     private final MemberRepository memberRepository;
 
+    @Autowired
     public MemberService(MemberRepository memberRepository) {
         this.memberRepository = memberRepository;
     }

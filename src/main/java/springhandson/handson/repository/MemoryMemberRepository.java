@@ -1,11 +1,13 @@
 package springhandson.handson.repository;
 
+import org.springframework.stereotype.Repository;
 import springhandson.handson.domain.Member;
 
 import java.util.*;
 
 
 // 회원 리포지토리 메모리 구현체
+@Repository // Spring Container 에 등록
 public class MemoryMemberRepository implements MemberRepository {
     private static Map<Long, Member> store = new HashMap<>();
     private static long sequence = 0L;
