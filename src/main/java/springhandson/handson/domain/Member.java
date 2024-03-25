@@ -1,7 +1,13 @@
 package springhandson.handson.domain;
 
+import jakarta.persistence.*;
+
 // 회원 객체 생성
+@Entity
 public class Member {
+
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+
     private Long id;
     private String name;
 

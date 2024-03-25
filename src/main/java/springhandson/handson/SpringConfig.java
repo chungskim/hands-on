@@ -1,7 +1,9 @@
 package springhandson.handson;
 
+import jakarta.persistence.EntityManager;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import springhandson.handson.repository.JpaMemberRepository;
 import springhandson.handson.repository.MemberRepository;
 import springhandson.handson.repository.MemoryMemberRepository;
 import springhandson.handson.service.MemberService;
@@ -12,6 +14,7 @@ import springhandson.handson.service.MemberService;
 @Configuration
 public class SpringConfig {
 
+    private EntityManager em;
     @Bean
     public MemberService memberService() {
         return new MemberService(memberRepository());
@@ -19,6 +22,7 @@ public class SpringConfig {
 
     @Bean
     public MemberRepository memberRepository() {
-        return new MemoryMemberRepository();
+        // return new MemoryMemberRepository();
+        return new JpaMemberRepository(em);
     }
 }
